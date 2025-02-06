@@ -1,0 +1,71 @@
+:root {
+    --title: "Click Crazy Fireworks";
+    --author: "Matt Cannon";
+    --contact: "mc@mattcannon.design";
+    --description: "Random fireworks over a blank void, as is life. Click like crazy to see the finale!";
+    --keywords: "codepenchallenge, cpc-celebration, fireworks, animation, canvas, JavaScript, visual effects, celebration, night sky, particles, interactive, generative art, dynamic display, colorful explosions, seamless animations";
+    --last-modified: "2024-12-16";
+    --content-language: "en";
+    --generator: "HTML5, CSS3, JavaScript";
+  }
+  
+  body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  canvas {
+    display: block;
+  }
+  
+
+  #congrats-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgb(172, 223, 203);
+    font-weight: 200;
+    text-align: center;
+    z-index: 2; /* Ensure it's above the canvas */
+    font-family: initial;
+  }
+
+  #congrats-container {
+    position: fixed; /* Use fixed positioning to keep it visible on the screen */
+    top: 50%; /* Center the message vertically */
+    left: 50%; /* Center the message horizontally */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering */
+    text-align: center;
+    z-index: 9999; /* Ensure it's above the canvas and other elements */
+    color: white;
+    font-size: 3rem;
+    display: none; /* Hide initially */
+  }
+  
+  #congrats-message {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  #home-button {
+    background-color: yellow;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 600px; /* Increase this value to move the button further down */
+    margin-right: 30px;
+  }
+  
+  #home-button:hover {
+    background-color: gold;
+  }
+  

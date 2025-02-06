@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+    <script type="module" src="firebase.js" defer></script>
+</head>
+
+<body>
+    <div class="login-form">
+        <h1>Sign Up</h1>
+        <div class="container">
+            <div class="main">
+                <div id="signUpMessage" class="messageDiv" style="display: none;"></div>
+                <div class="content">
+                    <h2>Sign Up</h2>
+                    <form>
+                        <input id="name" type="text" placeholder="Name" required autofocus>
+                        <input id="email" type="email" placeholder="Email" required>
+                        <input id="password" type="password" placeholder="Password" required>
+                        <button id="Signup" class="btn" type="submit">Signup</button>
+                    </form>
+                </div>
+                <div class="form-img">
+                    <a href="index.html"><img src="futurepath.png" alt="FuturePath"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-form">
+        <h1>Sign In</h1>
+        <div class="container">
+            <div class="main">
+                <div id="signInMessage" class="messageDiv" style="display: none;"></div>
+                <div class="content">
+                    <h2>Sign In</h2>
+                    <form>
+                        <input id="email-signin" type="email" placeholder="Email" required>
+                        <input id="password-signin" type="password" placeholder="Password" required>
+                        <button id="Signin" class="btn" type="submit">Login</button>
+                    </form>
+                </div>
+                <div class="form-img">
+                    <a href="index.html"><img src="futurepath.png" alt="FuturePath"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

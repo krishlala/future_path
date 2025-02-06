@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Postings</title>
+    <link rel="stylesheet" href="postings.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postings</title>
+    <link rel="stylesheet" href="postings.css">
+
+
+
+</head>
+
+
+
+<body>
+
+    <div class="loading-screen">
+        <svg class="loading-animation" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20"></circle>
+        </svg>
+    </div>
+
+    <!-- Main Content (Hidden Initially) -->
+    <div class="content">
+        <!-- Your existing SVG elements and content go here -->
+    </div>
+
+    <header>
+        <div class="navbar">
+            <div class="parent">
+            <div class="futurep">
+                <a href="index.html"><img class="futurep" src="futurepath.png"></a>
+            </div>
+            <div class="logo">
+                <h1>FuturePath</h1>
+            </div>
+            </div>
+            <div class="top">
+            <nav class="navbar-nav ml-auto">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="postings.html">Job Postings</a></li>
+                    <li><a href="submit-posting.html">Submit a Posting</a></li>
+                    <li><a href="apply.html">Apply for a Job</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+    </header>
+        <img class="otherimg" src="Lambert_High_School_Main_Entrance.jpg" alt="School Entrance">
+
+     </style>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Explore Career Opportunities</h2>
+            <p>Find internships, part-time jobs, and career-building roles.</p>
+        </div>
+    </section>
+
+    <section class="lambert">
+        <div class="lambert-content">
+
+        </div>
+    </section>
+
+    <section class="job-listings" id="job-listing">
+        <h2>Current Job Postings</h2>
+        <input type="text" id="searchBar" onkeyup="searchJobs()" placeholder="Search for jobs, companies, or locations..." class="search-bar">
+
+
+  <!-- <div class="job-card">
+    <h3>Social Media Manager</h3>
+    <p>Company: Social Savvy</p>
+    <p>Location: Atlanta, GA</p>
+    <a href="apply.html" class="button">Apply Now</a>
+  </div> -->
+
+        <!-- Continue generating more job listings as needed -->
+
+    </section>
+
+    <script>
+      function searchJobs() {
+        var input, filter, cards, cardContainer, h3, p, i, txtValue;
+        input = document.getElementById("searchBar");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementsByClassName("job-listings")[0];
+        cards = cardContainer.getElementsByClassName("job-card");
+        for (i = 0; i < cards.length; i++) {
+          h3 = cards[i].getElementsByTagName("h3")[0];
+          p = cards[i].getElementsByTagName("p");
+          txtValue = h3.textContent || h3.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+          } else {
+            txtValue = p[0].textContent || p[0].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              cards[i].style.display = "";
+            } else {
+              txtValue = p[1].textContent || p[1].innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+              } else {
+                cards[i].style.display = "none";
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+
+    <footer>
+        <p>&copy; 2025 FuturePath Job Portal. All rights reserved.</p>
+
+        <table>
+            <tr>
+                <th>Creators</th>
+                <th>Sponsers</th>
+                <th>Links</th>
+            </tr>
+            <tr>
+                <th>Krish Lala</th>
+                <td>Lambert FBLA</td>
+                <td><a href="link">Facebook</a></td>
+            </tr>
+            <tr>
+                <th>Nia Kanta</th>
+                <td>Lambert Highschool</td>
+                <td><a href="https://www.instagram.com/lamberthslonghorns/?hl=en">Instagram</a></td>
+            </tr>
+            <tr>
+                <th>Svamin Shrivastava</th>
+                <td>.</td>
+                <td><a href="https://www.linkedin.com/school/lambert-high-school/">Linkedin</a></td>
+            <tr>
+                    <th>Coach Taran</th>
+                    <td>.</td>
+                    <td><a href="https://x.com/lamberths?lang=en&mx=2">Twitter/X</a></td>
+            </tr>
+        </table>
+
+    </footer>
+
+
+
+
+
+    <script>
+        window.addEventListener("load", function() {
+            document.querySelector(".loading-screen").style.opacity = "0";
+            setTimeout(() => {
+                document.querySelector(".loading-screen").style.display = "none";
+                document.querySelector(".content").style.display = "block";
+            }, 500);
+        });
+
+        async function getData() {
+          const url = "http://localhost:3000/get";
+          try {
+            const result = await fetch(url);
+            const response = await result.json();
+
+            for (var i = 0; i < response.length; i++) {
+              let posting = response[i]
+              oldtext = document.getElementById("job-listing").innerHTML
+              document.getElementById("job-listing").innerHTML = oldtext + `<div class="job-card">
+                <h3>${ posting.title }</h3>
+                <p>Company: ${ posting.company}</p>
+                <p>Location: ${ posting.location }</p>
+                <a href="apply.html" class="button">Apply Now</a>
+              </div>`
+            }
+
+            if (!response.ok) {
+              throw new Error(`Response status: ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log(json);
+          } catch (error) {
+            console.error(error.message);
+          }
+        }
+
+        getData();
+
+    </script>
+
+    <script type="module" src="postings.js" defer></script>
+
+
+</body>
+</html>
