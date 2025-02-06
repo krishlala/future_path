@@ -3,7 +3,7 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
@@ -15,7 +15,7 @@
         <div class="navbar">
             <div class="parent">
                 <div class="futurep">
-                    <a href="index.html"><img class="futurep" src="futurepath.png" alt="FuturePath Logo"></a>
+                    <a href="index.html"><img class="futurep" src="futurepath.png"></a>
                 </div>
                 <div class="logo">
                     <h1>FuturePath</h1>
@@ -35,24 +35,25 @@
             </div>
         </div>
     </header>
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Admin Dashboard</h2>
-                <p>Manage job postings and applications with ease.</p>
-            </div>
-        </section>
+    <img class="img" src="lambert.jpeg" />
 
-        <section class="admin-section">
-            <h2>Manage Applications</h2>
-            <div id="admin-controls" class="admin-controls"></div>
-        </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Admin Dashboard</h2>
+            <p>Manage job postings and applications with ease.</p>
+        </div>
+    </section>
 
-        <section class="admin-section">
-            <h2>Manage Job Postings</h2>
-            <div id="job-controls" class="admin-controls"></div>
-        </section>
-    </main>
+    <section class="admin-section">
+        <h2>Manage Applications</h2>
+        <div id="admin-controls" class="admin-controls"></div>
+    </section>
+
+    <section class="admin-section">
+        <h2>Manage Job Postings</h2>
+        <div id="job-controls" class="admin-controls"></div>
+    </section>
+
     <footer>
         <div class="footer-address">
             <h3>Lambert High School</h3>
@@ -76,29 +77,66 @@
             <p><a href="https://x.com/lamberths?lang=en&mx=2">Twitter/X</a></p>
         </div>
     </footer>
+
+    <style>
+        footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: #35536c;
+        }
+
+        .footer-address, .footer-left, .footer-middle, .footer-right {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .footer-address {
+            font-size: 18px;
+        }
+
+        .footer-address h3 {
+            margin: 0 0 10px;
+        }
+
+        .footer-left h3, .footer-middle h3, .footer-right h3 {
+            margin: 0 0 10px;
+        }
+
+        .footer-left p, .footer-middle p, .footer-right p, .footer-address p {
+            margin: 5px 0;
+        }
+
+        .footer-left p a, .footer-right p a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+    </style>
+
     <script>
     async function getData() {
         const url = "https://future-path.onrender.com/getApps";  // Use your Render URL here
         try {
             const result = await fetch(url);
             const response = await result.json();
-            console.log(response);
+            console.log(response)
 
             for (var i = 0; i < response.length; i++) {
-                let app = response[i];
-                let adminControls = document.getElementById("admin-controls");
-                adminControls.innerHTML += `<div class="job-card">
+                let app = response[i]
+                oldtext = document.getElementById("admin-controls").innerHTML
+                console.log(app)
+                document.getElementById("admin-controls").innerHTML = oldtext + `<div class="job-card" style="color: #2f4156 !important;">
                             <h3>${app.position}</h3>
                             <p>Name: ${app.name}</p>
                             <p>Email: ${app.email}</p>
                             <p>Number: ${app.number}</p>
                             <p>Position: ${app.position}</p>
                             <p>Date: ${app.date}</p>
-                            <button class="del-button button" id="${app.name}">Delete</button>
-                          </div>`;
+                            <button class="del-button button" id="${app.name}" style="background-color: #ff6666 !important;">Delete</button>
+                          </div>`
             }
 
-            const buttons = document.getElementsByClassName("del-button");
+            const buttons = document.getElementsByClassName("del-button")
             Array.from(buttons).forEach(btn => {
                 btn.addEventListener("click", function(e) {
                     fetch('https://future-path.onrender.com/delApp', {  // Use your Render URL here
@@ -109,14 +147,15 @@
                         body: JSON.stringify({name: e.target.id})
                     }).then(data => {
                         console.log('Success:', data);
-                        window.location.reload();
-                    }).catch((error) => {
+                        window.location.reload()
+                    })
+                    .catch((error) => {
                         console.error('Error:', error);
-                        alert(error);
+                        alert(error)
                     });
 
-                });
-            });
+                })
+            })
 
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
@@ -136,17 +175,17 @@
             const response = await result.json();
 
             for (var i = 0; i < response.length; i++) {
-                let posting = response[i];
-                let jobControls = document.getElementById("job-controls");
-                jobControls.innerHTML += `<div class="job-card">
+                let posting = response[i]
+                oldtext = document.getElementById("job-controls").innerHTML
+                document.getElementById("job-controls").innerHTML = oldtext + `<div class="job-card" style="color: #2f4156 !important;">
                             <h3>${posting.title}</h3>
                             <p>Company: ${posting.company}</p>
-                            <p>Location: ${posting.location}</p>
-                            <button class="del-post-button button" id="${posting.title}">Delete</button>
-                          </div>`;
+                            <p>Location: ${ posting.location }</p>
+                            <button class="del-post-button button" id="${posting.title}" style="background-color: #ff6666 !important;">Delete</button>
+                          </div>`
             }
 
-            const buttons = document.getElementsByClassName("del-post-button");
+            const buttons = document.getElementsByClassName("del-post-button")
             Array.from(buttons).forEach(btn => {
                 btn.addEventListener("click", function(e) {
                     fetch('https://future-path.onrender.com/delPost', {  // Use your Render URL here
@@ -157,14 +196,15 @@
                         body: JSON.stringify({position: e.target.id})
                     }).then(data => {
                         console.log('Success:', data);
-                        window.location.reload();
-                    }).catch((error) => {
+                        window.location.reload()
+                    })
+                    .catch((error) => {
                         console.error('Error:', error);
-                        alert(error);
+                        alert(error)
                     });
 
-                });
-            });
+                })
+            })
 
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
@@ -175,7 +215,8 @@
         }
     }
 
-    getPostings();
+    getPostings()
     </script>
+
 </body>
 </html>
