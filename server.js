@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 
+
 // Use CORS middleware
 app.use(cors());
 
@@ -83,3 +84,4 @@ app.listen(port, () => {
   console.log(`app listening on port ${port}`);
   console.log(`http://localhost:${port}`);
 });
+
