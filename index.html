@@ -30,7 +30,7 @@
         }
 
         .futurep img {
-            width: 20%;
+            width: 100%;
         }
 
         .img {
@@ -38,14 +38,10 @@
             border-radius: 15px;
         }
 
-        .futurep, .logo {
-            display: inline-block;
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        .parent {
-            padding-right: -500px;
+        .futurep {
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
 
         body {
@@ -60,7 +56,7 @@
 
         header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
             padding: 20px 30px;
             background-color: var(--secondary-color);
@@ -71,8 +67,9 @@
         .logo h1 {
             font-family: 'DM Mono', monospace;
             font-weight: 700;
-            text-align: left;
+            text-align: center;
             color: var(--text-color);
+            margin: 0;
         }
 
         nav ul {
@@ -81,6 +78,8 @@
             gap: 20px;
             margin: 0;
             padding: 0;
+            justify-content: center;
+            width: 100%;
         }
 
         nav ul li a {
@@ -93,14 +92,9 @@
             color: var(--button-color);
         }
 
-        .navbar-nav {
-            position: absolute;
-            right: 10px;
-        }
-
         .hero {
             background: var(--secondary-color);
-            color: var(--text-color);
+            color: var (--text-color);
             padding: 60px 20px;
             position: relative;
             border-bottom-left-radius: 8px;
@@ -111,7 +105,7 @@
         .hero::before, .hero::after {
             content: '';
             position: absolute;
-            background: var(--background-shape);
+            background: var (--background-shape);
             border-radius: 50%;
             opacity: 0.5;
         }
@@ -121,7 +115,7 @@
             height: 300px;
             top: -100px;
             left: -100px;
-            background: var(--shape-color1);
+            background: var (--shape-color1);
         }
 
         .hero::after {
@@ -129,13 +123,13 @@
             height: 200px;
             bottom: -100px;
             right: -100px;
-            background: var(--shape-color2);
+            background: var (--shape-color2);
         }
 
         .hero-content::before {
             content: '';
             position: absolute;
-            background: var(--shape-color3);
+            background: var (--shape-color3);
             border-radius: 50%;
             width: 150px;
             height: 150px;
@@ -157,7 +151,7 @@
 
         .button {
             padding: 10px 25px;
-            background: var(--button-color);
+            background: var (--button-color);
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -167,12 +161,12 @@
         }
 
         .button:hover {
-            background: var(--button-hover);
+            background: var (--button-hover);
         }
 
         .features, .job-listings, .testimonials, .signup {
             padding: 50px;
-            background: var(--primary-color);
+            background: var (--primary-color);
             margin: 30px auto;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -187,16 +181,16 @@
         }
 
         .feature-item {
-            background: var(--secondary-color);
+            background: var (--secondary-color);
             padding: 20px;
             border-radius: 10px;
-            color: var(--text-color);
+            color: var (--text-color);
             width: 300px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .testimonial-card {
-            background-color: var(--secondary-color);
+            background-color: var (--secondary-color);
             border: 1px solid #ddd;
             padding: 20px;
             margin: 10px;
@@ -207,14 +201,14 @@
 
         .testimonial-card p {
             font-style: italic;
-            color: var(--text-color);
+            color: var (--text-color);
             font-size: 35px;
         }
 
         .testimonial-card span {
             display: block;
             margin-top: 10px;
-            color: var(--text-color);
+            color: var (--text-color);
             font-size: 20px;
         }
 
@@ -222,8 +216,8 @@
             display: flex;
             justify-content: space-between;
             padding: 40px;
-            background-color: var(--primary-color);
-            color: var(--text-color);
+            background-color: var (--primary-color);
+            color: var (--text-color);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -252,11 +246,11 @@
 
         .footer-left p a, .footer-right p a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var (--text-color);
         }
 
         .footer-left p a:hover, .footer-right p a:hover {
-            color: var(--button-color);
+            color: var (--button-color);
         }
 
         .footer-social a img {
@@ -289,17 +283,22 @@
         }
 
         .footer-info th {
-            background-color: var(--button-color);
+            background-color: var (--button-color);
             color: #ffffff;
             border-radius: 10px 10px 0 0;
         }
 
         .footer-info td {
-            background-color: var(--accent-color);
+            background-color: var (--accent-color);
             border-radius: 0 0 10px 10px;
         }
 
         .footer-info a {
+            color: var (--button-color);
+            text-decoration: none;
+        }
+
+        .footer-info a{
             color: var(--button-color);
             text-decoration: none;
         }
