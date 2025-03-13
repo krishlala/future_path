@@ -425,34 +425,34 @@
         <button type="submit">Submit Application</button>
     </form> -->
     <script>
-        document.getElementById("submit").addEventListener("click" ,function(e) {
-          e.preventDefault()
-          const app = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            number: document.getElementById("number").value,
-            position: document.getElementById("position").value,
-            date: document.getElementById("date").value,
-          }
-          console.log(JSON.stringify(app))
-          fetch('http://localhost:3000/addApp', {
-              method: 'POST', // Specify the request method
-              headers: {
-                  'Content-Type': 'application/json' // Indicate the content type
-              },
-              body: JSON.stringify(app) // Convert the data to a JSON string
-          }).then(data => {
-              console.log('Success:', data); // Handle the response data
-              window.location.href = "congrats.html";
-          })
-          .catch((error) => {
-              console.error('Error:', error); // Handle any errors
-              alert(error)
-          });
-
-
-        })
+        document.getElementById("submit").addEventListener("click", function(e) {
+            e.preventDefault();
+            const app = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                number: document.getElementById("number").value,
+                position: document.getElementById("position").value,
+                date: document.getElementById("date").value,
+            };
+            console.log(JSON.stringify(app));
+            
+            fetch('https://future-path.onrender.com/addApp', { // Updated URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(app)
+            }).then(data => {
+                console.log('Success:', data);
+                window.location.href = "congrats.html";
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error);
+            });
+        });
     </script>
+    
 
 </body>
 </html>
